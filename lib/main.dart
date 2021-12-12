@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
       initialData: null,
       child: MaterialApp(
         title: 'Tweet',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),

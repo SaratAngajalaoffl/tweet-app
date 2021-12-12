@@ -7,49 +7,37 @@ class FirebaseAuthService {
     return _auth.authStateChanges();
   }
 
-  Future<UserCredential> signInWithGoogle() async {
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+  Future<void> signInWithGoogle() async {}
 
-    final GoogleSignInAuthentication? googleAuth =
-        await googleUser?.authentication;
+  Future<void> signInWithFacebook() async {
+    // Trigger the sign-in flow
+    // final LoginResult loginResult = await FacebookAuth.instance.login();
 
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
-    );
+    // Create a credential from the access token
+    // final OAuthCredential facebookAuthCredential =
+    //     FacebookAuthProvider.credential(loginResult.accessToken.token);
 
-    return await FirebaseAuth.instance.signInWithCredential(credential);
+    // Once signed in, return the UserCredential
+    // return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
   }
 
-  // Future<UserCredential> signInWithFacebook() async {
-  //   // Trigger the sign-in flow
-  //   final LoginResult loginResult = await FacebookAuth.instance.login();
+  Future<void> signInWithGitHub() async {
+    // final GitHubSignIn gitHubSignIn = GitHubSignIn(
+    //     clientId: clientId,
+    //     clientSecret: clientSecret,
+    //     redirectUrl: redirectUrl);
+    // var result = await gitHubSignIn.signIn(context);
+    // switch (result.status) {
+    //   case GitHubSignInResultStatus.ok:
+    //     print(result.token)
+    //     break;
 
-  //   // Create a credential from the access token
-  //   final OAuthCredential facebookAuthCredential =
-  //       FacebookAuthProvider.credential(loginResult.accessToken.token);
-
-  //   // Once signed in, return the UserCredential
-  //   return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
-  // }
-
-  // Future<User> signInWithGitHub() async {
-  //   final GitHubSignIn gitHubSignIn = GitHubSignIn(
-  //       clientId: clientId,
-  //       clientSecret: clientSecret,
-  //       redirectUrl: redirectUrl);
-  //   var result = await gitHubSignIn.signIn(context);
-  //   switch (result.status) {
-  //     case GitHubSignInResultStatus.ok:
-  //       print(result.token)
-  //       break;
-
-  //     case GitHubSignInResultStatus.cancelled:
-  //     case GitHubSignInResultStatus.failed:
-  //       print(result.errorMessage);
-  //       break;
-  //   }
-  // }
+    //   case GitHubSignInResultStatus.cancelled:
+    //   case GitHubSignInResultStatus.failed:
+    //     print(result.errorMessage);
+    //     break;
+    // }
+  }
 
   Future<UserCredential> signInWithEmailandPassword(
       {required String email, required String password}) async {
