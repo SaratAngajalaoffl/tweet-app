@@ -12,6 +12,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  String email = "";
+  String password = "";
+
   @override
   Widget build(BuildContext context) {
     final _auth = FirebaseAuthService();
@@ -49,37 +52,61 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: Theme.of(context).textTheme.headline4,
                       ),
                       const SizedBox(height: 20.0),
-                      const TextField(
-                        decoration: InputDecoration(
+                      TextField(
+                        decoration: const InputDecoration(
                           label: Text('Email'),
                         ),
+                        onChanged: (text) {
+                          setState(() {
+                            email = text;
+                          });
+                        },
                       ),
                       const SizedBox(height: 20.0),
-                      const TextField(
-                        decoration: InputDecoration(
+                      TextField(
+                        obscureText: true,
+                        decoration: const InputDecoration(
                           label: Text('Password'),
                         ),
+                        onChanged: (text) {
+                          setState(() {
+                            password = text;
+                          });
+                        },
                       ),
                       const SizedBox(height: 20.0),
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(10.0),
-                        child: SizedBox(
-                          height: 40.0,
-                          child: Container(
-                            decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                fit: BoxFit.fill,
-                                image: AssetImage('assets/images/bg.jpg'),
+                      GestureDetector(
+                        onTap: () async {
+                          print("$email,$password");
+                          try {
+                            await _auth.signInWithEmailandPassword(
+                              email: email,
+                              password: password,
+                            );
+                          } catch (e) {
+                            print(e);
+                          }
+                        },
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10.0),
+                          child: SizedBox(
+                            height: 40.0,
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                image: DecorationImage(
+                                  fit: BoxFit.fill,
+                                  image: AssetImage('assets/images/bg.jpg'),
+                                ),
                               ),
+                              child: const Center(
+                                  child: Text(
+                                "Login",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18.0,
+                                ),
+                              )),
                             ),
-                            child: const Center(
-                                child: Text(
-                              "Login",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18.0,
-                              ),
-                            )),
                           ),
                         ),
                       ),
