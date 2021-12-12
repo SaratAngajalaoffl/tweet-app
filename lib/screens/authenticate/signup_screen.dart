@@ -77,7 +77,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       const SizedBox(height: 20.0),
                       GestureDetector(
                         onTap: () async {
-                          print("$email,$password");
                           try {
                             await _auth.signUpWithEmailandPassword(
                               email: email,

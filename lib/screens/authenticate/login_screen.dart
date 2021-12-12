@@ -77,8 +77,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       const SizedBox(height: 20.0),
                       GestureDetector(
                         onTap: () async {
-                          print("$email,$password");
                           try {
+                            // await uploadFiles(pictures: <File>[]);
                             await _auth.signInWithEmailandPassword(
                               email: email,
                               password: password,

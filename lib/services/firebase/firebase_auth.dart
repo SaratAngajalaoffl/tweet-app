@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:tweet/services/auth/auth_service.dart';
 
 class FirebaseAuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -39,17 +40,32 @@ class FirebaseAuthService {
     // }
   }
 
-  Future<void> signInWithEmailandPassword(
-      {required String email, required String password}) async {
-    await _auth.signInWithEmailAndPassword(email: email, password: email);
+  Future<void> signInWithEmailandPassword({
+    required String email,
+    required String password,
+  }) async {
+    UserCredential cred = await _auth.signInWithEmailAndPassword(
+      email: email,
+      password: email,
+    );
+
+    await loginUser(uid: cred.user?.uid ?? "");
   }
 
-  Future<void> signUpWithEmailandPassword(
-      {required String email, required String password}) async {
-    await _auth.createUserWithEmailAndPassword(email: email, password: email);
+  Future<void> signUpWithEmailandPassword({
+    required String email,
+    required String password,
+  }) async {
+    UserCredential cred = await _auth.createUserWithEmailAndPassword(
+      email: email,
+      password: email,
+    );
+
+    await registerUser(uid: cred.user?.uid ?? "");
   }
 
   Future<void> signOut() async {
     await _auth.signOut();
+    await logoutUser();
   }
 }
