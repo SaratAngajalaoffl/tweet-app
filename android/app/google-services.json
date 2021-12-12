@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "764914381278",
+    "firebase_url": "https://tweet-9beb9-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "tweet-9beb9",
+    "storage_bucket": "tweet-9beb9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:764914381278:android:1f0c851335a0b1b3196d4f",
+        "android_client_info": {
+          "package_name": "com.tweet.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "764914381278-fitu312k4r604cl8t8pu8n0l753hnkt5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDatjlIfdMSrV-UVSYDgqgJ_9svO8KTcws"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "764914381278-fitu312k4r604cl8t8pu8n0l753hnkt5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
