@@ -88,7 +88,7 @@ Future<Map<String, dynamic>> postRequestwithFormData({
 
   var formData = http.FormData.fromMap({
     ...data,
-    'picture': multipartFiles,
+    'images': multipartFiles,
   });
 
   headers['Content-Type'] = contentType;

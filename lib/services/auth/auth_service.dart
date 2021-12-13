@@ -38,7 +38,5 @@ Future<void> loginUser({required String uid}) async {
 }
 
 Future<void> logoutUser() async {
-  await _storage.delete(
-    key: 'accessToken',
-  );
+  await _storage.deleteAll();
 }

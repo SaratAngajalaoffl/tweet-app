@@ -1,5 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:tweet/services/auth/auth_service.dart';
+
+const _storage = FlutterSecureStorage();
 
 class FirebaseAuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -49,6 +52,11 @@ class FirebaseAuthService {
       password: email,
     );
 
+    await _storage.write(
+      key: 'authId',
+      value: cred.user?.uid ?? "",
+    );
+
     await loginUser(uid: cred.user?.uid ?? "");
   }
 
@@ -59,6 +67,11 @@ class FirebaseAuthService {
     UserCredential cred = await _auth.createUserWithEmailAndPassword(
       email: email,
       password: email,
+    );
+
+    await _storage.write(
+      key: 'authId',
+      value: cred.user?.uid ?? "",
     );
 
     await registerUser(uid: cred.user?.uid ?? "");

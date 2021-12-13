@@ -13,5 +13,6 @@ Future<List<String>> uploadFiles({required List<File> pictures}) async {
 
   print(response["data"]);
 
-  return response["data"]["data"] ?? <String>[];
+  return response["data"]["data"].map<String>((i) => i as String).toList() ??
+      <String>[];
 }
