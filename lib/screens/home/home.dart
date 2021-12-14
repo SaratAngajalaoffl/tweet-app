@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tweet/models/user_model.dart';
 import 'package:tweet/screens/home/create_post.dart';
+import 'package:tweet/screens/home/dashboard.dart';
 import 'package:tweet/screens/home/user_detail.dart';
 import 'package:tweet/services/brain/brain_service.dart';
 import 'package:tweet/services/firebase/firebase_auth.dart';
@@ -80,6 +81,17 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(
             onPressed: _auth.signOut,
             icon: const Icon(EvaIcons.logOut),
+          ),
+          IconButton(
+            icon: user?.picture != null
+                ? CircleAvatar(
+                    backgroundImage: Image.network(
+                      user?.picture ?? "",
+                      fit: BoxFit.fill,
+                    ).image,
+                  )
+                : const Icon(EvaIcons.person),
+            onPressed: () {},
           )
         ],
       ),
@@ -96,15 +108,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 ? UserDetails(
                     handleSave: handleSave,
                   )
-                : Center(
-                    child: Text("Welcome ${user?.username}"),
-                  ),
+                : const DashboardScreen(),
       ),
       floatingActionButton: user != null
           ? FloatingActionButton(
               onPressed: () {
                 Navigator.of(context).push(
-                  MaterialPageRoute(builder: (_) => const CreatePostScreen()),
+                  MaterialPageRoute(
+                      builder: (_) => CreatePostScreen(
+                            user: user,
+                          )),
                 );
               },
               child: const Icon(EvaIcons.plus),

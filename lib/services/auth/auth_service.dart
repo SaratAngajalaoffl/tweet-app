@@ -1,7 +1,7 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:tweet/helpers/dio_helpers.dart';
 
-const _baseUrl = "http://192.168.1.8:8080";
+const _baseUrl = "http://192.168.73.117:8080";
 
 const _storage = FlutterSecureStorage();
 

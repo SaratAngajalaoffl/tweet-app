@@ -1,8 +1,7 @@
-import 'dart:io';
 
 import 'package:tweet/helpers/dio_helpers.dart';
 
-const _baseUrl = "http://192.168.1.8:8083";
+const _baseUrl = "http://192.168.73.117:8083";
 
 Future<double> getDetection(
     {required String title, required String description}) async {
